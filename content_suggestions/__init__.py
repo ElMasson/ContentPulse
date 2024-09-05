@@ -1,0 +1,2 @@
+#content_suggestons/__init__.py
+from .display import display_content_suggestions

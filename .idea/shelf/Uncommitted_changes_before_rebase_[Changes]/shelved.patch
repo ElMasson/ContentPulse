@@ -1,0 +1,245 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+--- a/.idea/misc.xml	
++++ /dev/null	
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Black">
+-    <option name="sdkName" value="Python 3.12 (ContentPulse)" />
+-  </component>
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (ContentPulse)" project-jdk-type="Python SDK" />
+-</project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1a036bae-c3b5-4705-848b-c832e4c9c219\" name=\"Changes\" comment=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2l0HsXebGfldt2gDPriSYbJCuyC\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Python.convjsonl.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/FOLDR/ContentPulse/img&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\pc\\FOLDR\\ContentPulse\\img\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\pc\\FOLDR\\ContentPulse\\pages\" />\r\n      <recent name=\"C:\\Users\\pc\\FOLDR\\ContentPulse\\img\" />\r\n      <recent name=\"C:\\Users\\pc\\FOLDR\\ContentPulse\\database\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1a036bae-c3b5-4705-848b-c832e4c9c219\" name=\"Changes\" comment=\"\" />\r\n      <created>1724310280810</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1724310280810</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"ContentPulse v1.0.0\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1724314553885</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1724314553885</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725521619906</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725521619906</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725521865037</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725521865037</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725521874130</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725521874130</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725522227638</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725522227638</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725522240544</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725522240544</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"ContentPulse v1.0.0\" />\r\n    <MESSAGE value=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" suspend=\"THREAD\" type=\"python-line\">\r\n          <url>file://$PROJECT_DIR$/content_suggestions/suggestion_generator.py</url>\r\n          <line>47</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" suspend=\"THREAD\" type=\"python-line\">\r\n          <url>file://$PROJECT_DIR$/configuration/build_matrix.py</url>\r\n          <line>2</line>\r\n          <option name=\"timeStamp\" value=\"6\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -1,10 +1,16 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
++    <list default="true" id="d0aa8475-1c36-44bf-9f4a-f4ebaa794918" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/ContentPulse.iml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -13,36 +19,21 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 1
+-}</component>
+-  <component name="ProjectId" id="2l0HsXebGfldt2gDPriSYbJCuyC" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+-    <ConfirmationsSetting value="2" id="Add" />
+-  </component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "customColor": "",
++  "associatedIndex": 1
++}]]></component>
++  <component name="ProjectId" id="2ldwx2CPfjJQZkt4nK0uN65kE0Z" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;Python.convjsonl.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/FOLDR/ContentPulse/img&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "master"
+   }
+-}</component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\pc\FOLDR\ContentPulse\img" />
+-    </key>
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\pc\FOLDR\ContentPulse\pages" />
+-      <recent name="C:\Users\pc\FOLDR\ContentPulse\img" />
+-      <recent name="C:\Users\pc\FOLDR\ContentPulse\database" />
+-    </key>
+-  </component>
++}]]></component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+@@ -53,83 +44,23 @@
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="" />
+-      <created>1724310280810</created>
++      <changelist id="d0aa8475-1c36-44bf-9f4a-f4ebaa794918" name="Changes" comment="" />
++      <created>1725523507669</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1724310280810</updated>
+-    </task>
+-    <task id="LOCAL-00001" summary="ContentPulse v1.0.0">
+-      <option name="closed" value="true" />
+-      <created>1724314553885</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1724314553885</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+-      <option name="closed" value="true" />
+-      <created>1725521619906</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1725521619906</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+-      <option name="closed" value="true" />
+-      <created>1725521865037</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1725521865037</updated>
++      <updated>1725523507669</updated>
+     </task>
+-    <task id="LOCAL-00004" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+-      <option name="closed" value="true" />
+-      <created>1725521874130</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1725521874130</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+-      <option name="closed" value="true" />
+-      <created>1725522227638</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1725522227638</updated>
+-    </task>
+-    <task id="LOCAL-00006" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+-      <option name="closed" value="true" />
+-      <created>1725522240544</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1725522240544</updated>
+-    </task>
+-    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+-  <component name="VcsManagerConfiguration">
+-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="ContentPulse v1.0.0" />
+-    <MESSAGE value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+-    <option name="LAST_COMMIT_MESSAGE" value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/content_suggestions/suggestion_generator.py</url>
+-          <line>47</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+-          <url>file://$PROJECT_DIR$/configuration/build_matrix.py</url>
+-          <line>2</line>
+-          <option name="timeStamp" value="6" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/ContentPulse.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/.venv\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/ContentPulse.iml b/.idea/ContentPulse.iml
+--- a/.idea/ContentPulse.iml	
++++ b/.idea/ContentPulse.iml	
+@@ -1,9 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$">
+-      <excludeFolder url="file://$MODULE_DIR$/.venv" />
+-    </content>
++    <content url="file://$MODULE_DIR$" />
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	
++++ b/.idea/vcs.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	
++++ b/.gitignore	
+@@ -0,0 +1,1 @@
++/.env
