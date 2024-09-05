@@ -1,157 +1,119 @@
+# main.py
+
 import streamlit as st
 import pandas as pd
-from database.connection import get_connection
+import psycopg2
+from psycopg2.extras import DictCursor
+from database.connection import get_connection, close_connection
 from database.models import initialize_database
 from editorial_plan.display import display_editorial_plan
-import psycopg2
+from configuration.branding import branding_config
+from configuration.personas import personas_config
+from configuration.build_matrix import build_matrix_config
+from configuration.content_types import content_types_config
+from configuration.business_objectives import business_objectives_config
+from content_suggestions.display import display_content_suggestions
+import logging
 
-# Configuration de la page Streamlit
+# Logging configuration
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# Streamlit page configuration
 st.set_page_config(page_title="ContentPulse", page_icon="📅", layout="wide")
 
-# Appliquer un style personnalisé
+# CSS styles
 st.markdown("""
-<style>
-    .stApp {
-        background-color: #f0f2f6;
+    <style>
+    .main {
+        padding: 0rem 1rem;
     }
-    .st-bw {
-        border-radius: 8px;
-        overflow: hidden;
+    .stButton>button {
+        width: 100%;
     }
-    .st-emotion-cache-xm9au6 {
-        border: 1px solid #ddd;
+    .stTextInput>div>div>input {
+        color: #4F8BF9;
     }
-    .st-emotion-cache-xm9au6 th {
-        background-color: #009879;
-        color: white;
-        font-weight: bold;
-    }
-    .st-emotion-cache-xm9au6 tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-    .sidebar-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 0;
-    }
-    .sidebar-logo img {
-        max-width: 80%;
-        height: auto;
-    }
-</style>
-""", unsafe_allow_html=True)
+    </style>
+    """, unsafe_allow_html=True)
 
-# Panneau latéral
-with st.sidebar:
-    # Logo
-    st.markdown(
-        '<div class="sidebar-logo"><img src="https://via.placeholder.com/150x150.png?text=ContentPulse" alt="ContentPulse Logo"/></div>',
-        unsafe_allow_html=True)
+# Initialisation de la session state
+if 'selected_article_id' not in st.session_state:
+    st.session_state.selected_article_id = None
 
-    # Éléments de configuration
-    with st.expander("Configuration"):
-        st.markdown("### Branding")
-        st.image("https://via.placeholder.com/30x30.png?text=B", width=30)
-        st.markdown("### Listes de personas")
-        st.image("https://via.placeholder.com/30x30.png?text=P", width=30)
-        st.markdown("### Matrice BUILD")
-        st.image("https://via.placeholder.com/30x30.png?text=M", width=30)
+def main():
+    # Connexion à la base de données et initialisation
+    try:
+        logger.info("Tentative de connexion à la base de données")
+        conn = get_connection()
+        logger.info("Connexion à la base de données réussie")
+        logger.info("Début de l'initialisation de la base de données")
+        initialize_database(conn)
+        logger.info("Base de données initialisée avec succès")
+    except Exception as e:
+        logger.error(f"Erreur de connexion ou d'initialisation de la base de données : {str(e)}")
+        st.error(f"Erreur de connexion à la base de données : {str(e)}")
+        return
 
-# Contenu principal
-st.title("ContentPulse - Pilotage du Plan Éditorial")
+    # Sidebar
+    st.sidebar.title("ContentPulse")
+    st.sidebar.image("img/logo.png", use_column_width=True)
 
-# Connexion à la base de données et initialisation
-try:
-    conn = get_connection()
-    initialize_database(conn)
-except psycopg2.Error as e:
-    st.error(f"Erreur de connexion à la base de données : {e}")
-    st.stop()
+    # Menu de navigation
+    menu_options = [
+        "Plan Éditorial",
+        "Branding",
+        "Personas",
+        "Matrice BUILD",
+        "Types de Contenu",
+        "Objectifs Métier"
+    ]
+    selected_option = st.sidebar.radio("Navigation", menu_options)
 
-# Définition des colonnes fonctionnelles souhaitées
-desired_columns = [
-    "Titre", "Type de contenu", "Thème", "Mots-clés", "Auteur",
-    "Date de publication prévue", "Statut", "Persona cible",
-    "Étape du parcours client", "Call-to-Action principal"
-]
+    # Main content
+    st.title("ContentPulse - Pilotage du Plan Éditorial")
 
-# Affichage et gestion du plan éditorial
-try:
-    df = display_editorial_plan(conn)
+    # Display content based on selected option
+    try:
+        if selected_option == "Plan Éditorial":
+            display_editorial_plan(conn)
+        elif selected_option == "Branding":
+            branding_config(conn)
+        elif selected_option == "Personas":
+            personas_config(conn)
+        elif selected_option == "Matrice BUILD":
+            build_matrix_config(conn)
+        elif selected_option == "Types de Contenu":
+            content_types_config(conn)
+        elif selected_option == "Objectifs Métier":
+            business_objectives_config(conn)
+    except Exception as e:
+        logger.error(f"Error displaying section {selected_option}: {str(e)}")
+        st.error(f"Une erreur s'est produite lors de l'affichage de cette section. Veuillez réessayer ou contacter l'administrateur.")
 
-    # Supprimer la colonne 'id' si elle existe
-    if 'id' in df.columns:
-        df = df.drop(columns=['id'])
+    # Pied de page
+    st.markdown("---")
+    st.markdown("© 2024 ContentPulse. Tous droits réservés.")
 
-    # Mapper les colonnes existantes aux colonnes souhaitées
-    column_mapping = {}
-    for i, col in enumerate(df.columns):
-        if i < len(desired_columns):
-            column_mapping[col] = desired_columns[i]
+    # Afficher la version de l'application
+    st.sidebar.markdown("---")
+    st.sidebar.text("ContentPulse v1.4.0")
+
+    # Fermeture de la connexion à la base de données
+    close_connection(conn)
+
+# Fonction de vérification du plan éditorial (pour le débogage)
+def verify_editorial_plan(conn):
+    with conn.cursor(cursor_factory=DictCursor) as cur:
+        cur.execute("SELECT COUNT(*) FROM contentpulse.editorial_plan")
+        count = cur.fetchone()[0]
+        logger.info(f"Nombre d'entrées dans le plan éditorial : {count}")
+        if count > 0:
+            cur.execute("SELECT * FROM contentpulse.editorial_plan LIMIT 1")
+            sample = cur.fetchone()
+            logger.info(f"Exemple d'entrée : {dict(sample)}")
         else:
-            column_mapping[col] = col  # Garder le nom original pour les colonnes supplémentaires
+            logger.warning("Le plan éditorial est vide")
 
-    df = df.rename(columns=column_mapping)
-
-    # Ajouter les colonnes manquantes
-    for col in desired_columns:
-        if col not in df.columns:
-            df[col] = ""
-
-    # Réordonner les colonnes
-    df = df[desired_columns + [col for col in df.columns if col not in desired_columns]]
-
-    # Convertir la colonne 'Date de publication prévue' en datetime
-    df['Date de publication prévue'] = pd.to_datetime(df['Date de publication prévue'], errors='coerce')
-
-except Exception as e:
-    st.warning(f"Erreur lors de la récupération du plan éditorial : {e}")
-    df = pd.DataFrame(columns=desired_columns)
-
-# Ajouter une ligne vide si le DataFrame est vide
-if df.empty:
-    df = pd.DataFrame([[''] * len(df.columns)], columns=df.columns)
-    df['Date de publication prévue'] = pd.NaT
-
-# Affichage de la table éditable
-edited_df = st.data_editor(
-    df,
-    num_rows="dynamic",
-    use_container_width=True,
-    hide_index=True,
-    column_config={
-        "Date de publication prévue": st.column_config.DateColumn(
-            "Date de publication prévue",
-            min_value=pd.Timestamp("2020-01-01"),
-            max_value=pd.Timestamp("2030-12-31"),
-            format="DD/MM/YYYY",
-        ),
-    }
-)
-
-# Bouton pour sauvegarder les modifications
-if st.button("Sauvegarder les modifications"):
-    # Ici, vous devriez ajouter la logique pour sauvegarder les modifications dans la base de données
-    st.success("Modifications sauvegardées avec succès!")
-
-# Fermeture de la connexion
-if 'conn' in locals():
-    conn.close()
-
-# Instructions d'utilisation
-st.markdown("""
-## Comment utiliser ContentPulse
-
-1. **Modifier une entrée** : Cliquez sur une cellule dans la table pour la modifier.
-2. **Ajouter une nouvelle ligne** : Cliquez sur le bouton '+' en bas de la table pour ajouter une nouvelle ligne.
-3. **Supprimer une ligne** : Cliquez sur le 'x' à gauche de la ligne que vous souhaitez supprimer.
-4. **Sauvegarder les modifications** : Après avoir effectué vos modifications, cliquez sur le bouton "Sauvegarder les modifications".
-5. **Configuration** : Utilisez le panneau latéral pour accéder aux paramètres de configuration (fonctionnalités à venir).
-
-N'hésitez pas à adapter votre plan éditorial en fonction de l'évolution de votre stratégie de contenu !
-""")
-
-# Pied de page
-st.markdown("---")
-st.markdown("© 2024 ContentPulse. Tous droits réservés. DATANALYSIS Groupe")
+if __name__ == "__main__":
+    main()

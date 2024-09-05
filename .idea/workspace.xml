@@ -4,32 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ContentPulse.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_fields/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_fields/add_field.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_fields/remove_field.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_fields/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/connection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/add_entry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/delete_entry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/display.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/edit_entry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editorial_plan/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +17,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2l0HsXebGfldt2gDPriSYbJCuyC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,15 +28,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.convjsonl.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/FOLDR/ContentPulse/img&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\FOLDR\ContentPulse\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\FOLDR\ContentPulse\pages" />
+      <recent name="C:\Users\pc\FOLDR\ContentPulse\img" />
       <recent name="C:\Users\pc\FOLDR\ContentPulse\database" />
     </key>
   </component>
@@ -78,9 +63,88 @@
       <option name="presentableId" value="Default" />
       <updated>1724310280810</updated>
     </task>
+    <task id="LOCAL-00001" summary="ContentPulse v1.0.0">
+      <option name="closed" value="true" />
+      <created>1724314553885</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724314553885</updated>
+    </task>
+    <task id="LOCAL-00002" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725521619906</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725521619906</updated>
+    </task>
+    <task id="LOCAL-00003" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725521865037</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725521865037</updated>
+    </task>
+    <task id="LOCAL-00004" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725521874130</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725521874130</updated>
+    </task>
+    <task id="LOCAL-00005" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725522227638</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725522227638</updated>
+    </task>
+    <task id="LOCAL-00006" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725522240544</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725522240544</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="ContentPulse v1.0.0" />
+    <MESSAGE value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+    <option name="LAST_COMMIT_MESSAGE" value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/content_suggestions/suggestion_generator.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/configuration/build_matrix.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
