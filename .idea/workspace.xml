@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+    <list default="true" id="1a036bae-c3b5-4705-848b-c832e4c9c219" name="Changes" comment="V.1.4.1 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <change afterPath="$PROJECT_DIR$/auth/authentication.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/branding.py" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/branding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editorial_plan/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/editorial_plan/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +117,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725522240544</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725524436572</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725524436572</updated>
+    </task>
+    <task id="LOCAL-00008" summary="V.1.4.1 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)">
+      <option name="closed" value="true" />
+      <created>1725524451757</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725524451757</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +151,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="ContentPulse v1.0.0" />
     <MESSAGE value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
-    <option name="LAST_COMMIT_MESSAGE" value="V.1.4.0 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+    <MESSAGE value="V.1.4.1 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
+    <option name="LAST_COMMIT_MESSAGE" value="V.1.4.1 - In progress&#10;Recherche internet KO&#10;Recherche dans de la documentation fournie à faire&#10;Amélioration du résultat du contenu à faire (trop court)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -143,6 +166,11 @@
           <url>file://$PROJECT_DIR$/configuration/build_matrix.py</url>
           <line>2</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/configuration/branding.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

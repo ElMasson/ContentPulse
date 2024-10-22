@@ -19,7 +19,7 @@ def branding_config(conn):
         'target_audience TEXT'
     ])
 
-    existing_data = get_existing_data(conn, 'branding')
+    existing_data = get_existing_data(conn, 'branding', company_id)
 
     company_name = st.text_input("Nom de l'entreprise", value=existing_data.get('company_name', ''))
     logo_url = st.text_input("URL du logo", value=existing_data.get('logo_url', ''))
@@ -36,6 +36,7 @@ def branding_config(conn):
 
     if st.button("Sauvegarder le Branding"):
         data = {
+            'company_id': company_id,  # Ajouter l'ID de l'entreprise
             'company_name': company_name,
             'logo_url': logo_url,
             'primary_color': primary_color,

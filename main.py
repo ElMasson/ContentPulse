@@ -1,5 +1,3 @@
-# main.py
-
 import streamlit as st
 import pandas as pd
 import psycopg2
@@ -13,7 +11,9 @@ from configuration.build_matrix import build_matrix_config
 from configuration.content_types import content_types_config
 from configuration.business_objectives import business_objectives_config
 from content_suggestions.display import display_content_suggestions
+from auth.authentication import check_password
 import logging
+from company.selection import company_selector
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -37,27 +37,36 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Initialisation de la session state
-if 'selected_article_id' not in st.session_state:
-    st.session_state.selected_article_id = None
-
 def main():
+    # Vérification de l'authentification
+    if not check_password():
+        return
+
     # Connexion à la base de données et initialisation
     try:
-        logger.info("Tentative de connexion à la base de données")
         conn = get_connection()
-        logger.info("Connexion à la base de données réussie")
-        logger.info("Début de l'initialisation de la base de données")
         initialize_database(conn)
-        logger.info("Base de données initialisée avec succès")
     except Exception as e:
-        logger.error(f"Erreur de connexion ou d'initialisation de la base de données : {str(e)}")
         st.error(f"Erreur de connexion à la base de données : {str(e)}")
         return
 
-    # Sidebar
+    # Sidebar avec sélection d'entreprise
     st.sidebar.title("ContentPulse")
     st.sidebar.image("img/logo.png", use_column_width=True)
+
+    # Informations utilisateur
+    if st.session_state.user:
+        st.sidebar.markdown(f"Connecté en tant que : **{st.session_state.user['username']}**")
+        if st.sidebar.button("Se déconnecter"):
+            st.session_state.user = None
+            st.session_state.login_time = None
+            st.rerun()
+
+    # Sélection de l'entreprise
+    current_company_id = company_selector()
+    if not current_company_id:
+        st.info("Veuillez sélectionner ou créer une entreprise pour continuer.")
+        return
 
     # Menu de navigation
     menu_options = [
@@ -70,50 +79,28 @@ def main():
     ]
     selected_option = st.sidebar.radio("Navigation", menu_options)
 
-    # Main content
+    # Main content avec contexte d'entreprise
     st.title("ContentPulse - Pilotage du Plan Éditorial")
 
-    # Display content based on selected option
+    # Main content avec contexte d'entreprise
     try:
         if selected_option == "Plan Éditorial":
-            display_editorial_plan(conn)
+            display_editorial_plan(conn, current_company_id)
         elif selected_option == "Branding":
-            branding_config(conn)
+            branding_config(conn, current_company_id)
         elif selected_option == "Personas":
-            personas_config(conn)
+            personas_config(conn, current_company_id)
         elif selected_option == "Matrice BUILD":
-            build_matrix_config(conn)
+            build_matrix_config(conn, current_company_id)
         elif selected_option == "Types de Contenu":
-            content_types_config(conn)
+            content_types_config(conn, current_company_id)
         elif selected_option == "Objectifs Métier":
-            business_objectives_config(conn)
+            business_objectives_config(conn, current_company_id)
     except Exception as e:
         logger.error(f"Error displaying section {selected_option}: {str(e)}")
-        st.error(f"Une erreur s'est produite lors de l'affichage de cette section. Veuillez réessayer ou contacter l'administrateur.")
+        st.error(f"Une erreur s'est produite lors de l'affichage de cette section.")
 
-    # Pied de page
-    st.markdown("---")
-    st.markdown("© 2024 ContentPulse. Tous droits réservés.")
-
-    # Afficher la version de l'application
-    st.sidebar.markdown("---")
-    st.sidebar.text("ContentPulse v1.4.0")
-
-    # Fermeture de la connexion à la base de données
     close_connection(conn)
-
-# Fonction de vérification du plan éditorial (pour le débogage)
-def verify_editorial_plan(conn):
-    with conn.cursor(cursor_factory=DictCursor) as cur:
-        cur.execute("SELECT COUNT(*) FROM contentpulse.editorial_plan")
-        count = cur.fetchone()[0]
-        logger.info(f"Nombre d'entrées dans le plan éditorial : {count}")
-        if count > 0:
-            cur.execute("SELECT * FROM contentpulse.editorial_plan LIMIT 1")
-            sample = cur.fetchone()
-            logger.info(f"Exemple d'entrée : {dict(sample)}")
-        else:
-            logger.warning("Le plan éditorial est vide")
 
 if __name__ == "__main__":
     main()
