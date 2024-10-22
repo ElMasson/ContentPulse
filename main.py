@@ -70,19 +70,19 @@ def main():
 
     # Menu de navigation
     menu_options = [
-        "Plan Éditorial",
         "Branding",
         "Personas",
         "Matrice BUILD",
         "Types de Contenu",
-        "Objectifs Métier"
+        "Objectifs Métier",
+        "Plan Éditorial",
+        "Campagnes Marketing (A venir)"
     ]
     selected_option = st.sidebar.radio("Navigation", menu_options)
 
     # Main content avec contexte d'entreprise
     st.title("ContentPulse - Pilotage du Plan Éditorial")
 
-    # Main content avec contexte d'entreprise
     try:
         if selected_option == "Plan Éditorial":
             display_editorial_plan(conn, current_company_id)

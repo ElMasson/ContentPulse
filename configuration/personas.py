@@ -1,17 +1,20 @@
 #configuration/personas.py
-
 import streamlit as st
-from psycopg2 import sql
 
-def personas_config(conn):
+def personas_config(conn, company_id):
     st.header("Configuration des Personas")
 
-    # Récupérer tous les personas
+    # Récupérer tous les personas de l'entreprise
     with conn.cursor() as cur:
-        cur.execute("SELECT name, is_selected FROM contentpulse.personas")
+        cur.execute("""
+            SELECT name, is_selected 
+            FROM contentpulse.personas 
+            WHERE company_id = %s
+            ORDER BY name
+        """, (company_id,))
         personas = cur.fetchall()
 
-    # Si la table est vide, insérez les valeurs par défaut
+    # Si pas de personas, créer les défauts
     if not personas:
         default_personas = [
             "Dirigeant d'entreprise",
@@ -22,47 +25,56 @@ def personas_config(conn):
         ]
         with conn.cursor() as cur:
             for persona in default_personas:
-                cur.execute(
-                    "INSERT INTO contentpulse.personas (name, is_selected) VALUES (%s, %s)",
-                    (persona, False)
-                )
+                cur.execute("""
+                    INSERT INTO contentpulse.personas (company_id, name, is_selected)
+                    VALUES (%s, %s, FALSE)
+                """, (company_id, persona))
         conn.commit()
 
-        # Récupérer à nouveau les personas après l'insertion
         with conn.cursor() as cur:
-            cur.execute("SELECT name, is_selected FROM contentpulse.personas")
+            cur.execute("""
+                SELECT name, is_selected 
+                FROM contentpulse.personas 
+                WHERE company_id = %s
+                ORDER BY name
+            """, (company_id,))
             personas = cur.fetchall()
 
-    # Créer un dictionnaire pour stocker l'état de sélection de chaque persona
     personas_dict = {persona[0]: persona[1] for persona in personas}
 
-    # Afficher les personas avec des cases à cocher
     st.write("Sélectionnez les personas pertinents pour votre stratégie :")
-    for persona, is_selected in personas_dict.items():
-        personas_dict[persona] = st.checkbox(persona, value=is_selected, key=f"persona_{persona}")
+    for persona in personas_dict:
+        personas_dict[persona] = st.checkbox(
+            persona,
+            value=personas_dict[persona],
+            key=f"persona_{company_id}_{persona}"
+        )
 
-    # Ajouter un nouveau persona
-    new_persona = st.text_input("Ajouter un nouveau persona")
-    if st.button("Ajouter le nouveau persona"):
+    new_persona = st.text_input(
+        "Ajouter un nouveau persona",
+        key=f"new_persona_{company_id}"
+    )
+
+    if st.button("Ajouter", key=f"add_persona_{company_id}"):
         if new_persona and new_persona not in personas_dict:
             with conn.cursor() as cur:
-                cur.execute(
-                    "INSERT INTO contentpulse.personas (name, is_selected) VALUES (%s, %s)",
-                    (new_persona, True)
-                )
+                cur.execute("""
+                    INSERT INTO contentpulse.personas (company_id, name, is_selected)
+                    VALUES (%s, %s, TRUE)
+                """, (company_id, new_persona))
             conn.commit()
             st.success(f"Persona '{new_persona}' ajouté avec succès!")
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.warning("Ce persona existe déjà ou le champ est vide.")
 
-    # Sauvegarder les changements
-    if st.button("Sauvegarder les Personas"):
+    if st.button("Sauvegarder les Personas", key=f"save_personas_{company_id}"):
         with conn.cursor() as cur:
             for persona, is_selected in personas_dict.items():
-                cur.execute(
-                    "UPDATE contentpulse.personas SET is_selected = %s WHERE name = %s",
-                    (is_selected, persona)
-                )
+                cur.execute("""
+                    UPDATE contentpulse.personas 
+                    SET is_selected = %s 
+                    WHERE company_id = %s AND name = %s
+                """, (is_selected, company_id, persona))
         conn.commit()
         st.success("Configuration des personas sauvegardée avec succès!")

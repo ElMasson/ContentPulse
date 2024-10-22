@@ -2,13 +2,16 @@
 
 import streamlit as st
 from psycopg2 import sql
-
-def build_matrix_config(conn):
+def build_matrix_config(conn, company_id):
     st.header("Configuration de la Matrice BUILD")
 
-    # Récupérer les personas sélectionnés
+    # Récupérer les personas sélectionnés pour cette entreprise
     with conn.cursor() as cur:
-        cur.execute("SELECT name FROM contentpulse.personas WHERE is_selected = TRUE")
+        cur.execute("""
+            SELECT name 
+            FROM contentpulse.personas 
+            WHERE company_id = %s AND is_selected = TRUE
+        """, (company_id,))
         personas = [row[0] for row in cur.fetchall()]
 
     if not personas:
@@ -19,21 +22,21 @@ def build_matrix_config(conn):
 
     # Récupérer les données existantes pour le persona sélectionné
     with conn.cursor() as cur:
-        cur.execute(
-            "SELECT * FROM contentpulse.build_matrix WHERE persona = %s",
-            (selected_persona,)
-        )
+        cur.execute("""
+            SELECT * FROM contentpulse.build_matrix 
+            WHERE company_id = %s AND persona = %s
+        """, (company_id, selected_persona))
         existing_data = cur.fetchone()
 
     if existing_data:
         pain_points = st.text_area(
             "Points de douleur (Pain Points)",
-            value=existing_data[2],
+            value=existing_data[3],
             help="Entrez les points de douleur séparés par des virgules"
         )
         pain_killers = st.text_area(
             "Solutions (Pain Killers)",
-            value=existing_data[3],
+            value=existing_data[4],
             help="Entrez les solutions séparées par des virgules"
         )
     else:
@@ -49,24 +52,14 @@ def build_matrix_config(conn):
     if st.button("Sauvegarder la Matrice BUILD"):
         try:
             with conn.cursor() as cur:
-                # Vérifier si une entrée existe déjà pour ce persona
-                cur.execute(
-                    "SELECT COUNT(*) FROM contentpulse.build_matrix WHERE persona = %s",
-                    (selected_persona,)
-                )
-                if cur.fetchone()[0] > 0:
-                    # Mettre à jour l'entrée existante
-                    cur.execute("""
-                        UPDATE contentpulse.build_matrix
-                        SET pain_points = %s, pain_killers = %s
-                        WHERE persona = %s
-                    """, (pain_points, pain_killers, selected_persona))
-                else:
-                    # Insérer une nouvelle entrée
-                    cur.execute("""
-                        INSERT INTO contentpulse.build_matrix (persona, pain_points, pain_killers)
-                        VALUES (%s, %s, %s)
-                    """, (selected_persona, pain_points, pain_killers))
+                cur.execute("""
+                    INSERT INTO contentpulse.build_matrix
+                    (company_id, persona, pain_points, pain_killers)
+                    VALUES (%s, %s, %s, %s)
+                    ON CONFLICT (company_id, persona) DO UPDATE
+                    SET pain_points = EXCLUDED.pain_points,
+                        pain_killers = EXCLUDED.pain_killers
+                """, (company_id, selected_persona, pain_points, pain_killers))
             conn.commit()
             st.success(f"Matrice BUILD pour {selected_persona} sauvegardée avec succès!")
         except Exception as e:
