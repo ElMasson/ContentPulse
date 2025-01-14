@@ -133,18 +133,30 @@ def get_business_objectives(conn, company_id):
         )
         return cur.fetchall()
 
+
 def display_editorial_plan(conn, company_id):
     st.header("Plan Éditorial")
 
     # Récupérer le plan éditorial existant
     df = get_editorial_plan(conn, company_id)
 
+    # S'assurer que les dates sont au bon format
+    if not df.empty and 'planned_publication_date' in df.columns:
+        df['planned_publication_date'] = pd.to_datetime(df['planned_publication_date']).dt.date
+
+    # S'assurer que les keywords sont des listes
+    df['keywords'] = df['keywords'].apply(format_keywords)
+
     # Ajouter un bouton pour générer des suggestions de contenu
     if st.button("Générer des suggestions de contenu"):
         with st.spinner("Génération des suggestions en cours..."):
             suggestions = generate_content_suggestions(conn, company_id)
             if suggestions is not None:
-                suggestions['company_id'] = company_id
+                # Convertir les dates en format date
+                if 'planned_publication_date' in suggestions.columns:
+                    suggestions['planned_publication_date'] = pd.to_datetime(
+                        suggestions['planned_publication_date']).dt.date
+
                 suggestions['keywords'] = suggestions['keywords'].apply(format_keywords)
                 df = pd.concat([df, suggestions], ignore_index=True)
                 save_editorial_plan(conn, df, company_id)
@@ -165,7 +177,11 @@ def display_editorial_plan(conn, company_id):
             "theme": st.column_config.TextColumn("Thème"),
             "keywords": st.column_config.ListColumn("Mots-clés"),
             "author": st.column_config.TextColumn("Auteur"),
-            "planned_publication_date": st.column_config.DateColumn("Date de publication prévue"),
+            "planned_publication_date": st.column_config.DateColumn(
+                "Date de publication prévue",
+                format="DD/MM/YYYY",
+                step=1
+            ),
             "status": st.column_config.SelectboxColumn(
                 "Statut",
                 options=["Planifié", "En cours", "Publié", "Archivé"],

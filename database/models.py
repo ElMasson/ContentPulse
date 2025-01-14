@@ -115,6 +115,16 @@ def initialize_database(conn):
                 UNIQUE(company_id, name)
             )
         """,
+        "generated_content":     """
+            CREATE TABLE IF NOT EXISTS contentpulse.generated_content (
+                id SERIAL PRIMARY KEY,
+                article_id INTEGER REFERENCES contentpulse.editorial_plan(id),
+                company_id INTEGER REFERENCES contentpulse.companies(id),
+                content TEXT NOT NULL,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(article_id, company_id)
+            )
+        """,
         "branding": """
             CREATE TABLE IF NOT EXISTS contentpulse.branding (
                 id SERIAL PRIMARY KEY,

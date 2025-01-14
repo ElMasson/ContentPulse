@@ -10,34 +10,46 @@ import io
 
 logger = logging.getLogger(__name__)
 
-def get_data_from_db(conn):
+def get_data_from_db(conn, company_id):
     data = {}
     try:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             logger.info("Récupération des données de la base de données")
 
-            # Récupérer les personas sélectionnés
-            cur.execute("SELECT name FROM contentpulse.personas WHERE is_selected = TRUE")
+            # Récupérer les personas sélectionnés pour cette entreprise
+            cur.execute("""
+                SELECT name FROM contentpulse.personas 
+                WHERE company_id = %s AND is_selected = TRUE
+            """, (company_id,))
             data['personas'] = [row['name'] for row in cur.fetchall()]
 
             # Récupérer les types de contenu sélectionnés avec leurs fréquences
             cur.execute("""
                 SELECT name, target_per_week, max_frequency_per_week, max_frequency_per_month 
                 FROM contentpulse.content_types 
-                WHERE is_selected = TRUE
-            """)
+                WHERE company_id = %s AND is_selected = TRUE
+            """, (company_id,))
             data['content_types'] = [dict(row) for row in cur.fetchall()]
 
             # Récupérer la matrice BUILD
-            cur.execute("SELECT * FROM contentpulse.build_matrix")
+            cur.execute("""
+                SELECT * FROM contentpulse.build_matrix 
+                WHERE company_id = %s
+            """, (company_id,))
             data['build_matrix'] = [dict(row) for row in cur.fetchall()]
 
             # Récupérer les objectifs métier sélectionnés
-            cur.execute("SELECT name FROM contentpulse.business_objectives WHERE is_selected = TRUE")
+            cur.execute("""
+                SELECT name FROM contentpulse.business_objectives 
+                WHERE company_id = %s AND is_selected = TRUE
+            """, (company_id,))
             data['business_objectives'] = [row['name'] for row in cur.fetchall()]
 
             # Récupérer les informations de branding
-            cur.execute("SELECT * FROM contentpulse.branding LIMIT 1")
+            cur.execute("""
+                SELECT * FROM contentpulse.branding 
+                WHERE company_id = %s LIMIT 1
+            """, (company_id,))
             data['branding'] = dict(cur.fetchone() or {})
 
         logger.info("Données récupérées avec succès")
@@ -45,8 +57,8 @@ def get_data_from_db(conn):
         logger.error(f"Erreur lors de la récupération des données : {e}")
     return data
 
-def generate_content_suggestions(conn):
-    data = get_data_from_db(conn)
+def generate_content_suggestions(conn, company_id):
+    data = get_data_from_db(conn, company_id)
     logger.info(f"Données récupérées : {json.dumps(data, default=str)}")
 
     if not data or all(not value for value in data.values()):
@@ -102,11 +114,9 @@ def generate_content_suggestions(conn):
     suggestions_csv = generate_ai_suggestions(prompt)
     if suggestions_csv:
         logger.info("Suggestions générées avec succès")
-        logger.info(f"Type de suggestions_csv : {type(suggestions_csv)}")
-        logger.info(f"Contenu de suggestions_csv : {suggestions_csv[:500]}...")
-
         try:
-            df = pd.read_csv(io.StringIO(suggestions_csv))  # Utilisation de io.StringIO ici
+            df = pd.read_csv(io.StringIO(suggestions_csv))
+            df['company_id'] = company_id  # Ajouter le company_id aux suggestions
             logger.info(f"DataFrame créé avec succès. Dimensions : {df.shape}")
             return df
         except Exception as e:
